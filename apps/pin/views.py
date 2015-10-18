@@ -1,37 +1,34 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 
-context = {
-	'data' : [
-	    {
-	    	'page': 1, 
-	    	'content': [
-	    		{
-	    			'title_txt'    :'Sample Title 1', 
-	    			'blurb_txt'    :'Blurb Text 1',
-	    			'author_txt'   :'Author Text 1',
-	    			'thumbnail_url':'Thumbnail URL 1',
-	    			'details_url'  :'Details Url 1'
-	    		},
-	    		{
-	    			'title_txt'    :'Sample Title 2', 
-	    			'blurb_txt'    :'Blurb Text 2',
-	    			'author_txt'   :'Author Text 2',
-	    			'thumbnail_url':'Thumbnail URL 2',
-	    			'details_url'  :'Details Url 2'
-	    		}    		
-	    	]
-	    }
-	]
-}
+from .models import Board
+import pprint,logging
 
+# Get an instance of a logger
+logger = logging.getLogger(__name__)
+pp     = pprint.PrettyPrinter(indent=4)
+
+# board data from DB based on selected page
+def get_page_data(page):
+    page_size = 20  # Default page size
+    offset    = 0   # Default offset, changes based on page selection
+
+    # If it is not first page then
+    # change offset based on page number
+    if page > 1:
+        offset = page_size * page
+
+    b = Board.objects.all()[offset:page_size - 1]
+    logger
+    return b
 
 # For first page, always load page 1
 def index(request):
-	content = context["data"][0]
-	return JsonResponse(content)
+    data = get_page_data(1)
+    pp.pprint(data)
+    return HttpResponse("Foo")
+    #return JsonResponse(data)
 
 # For other pages , load selected page
 def load_page(request, page):
-	content = context["data"][int(page) - 1]
-	return JsonResponse(content)
+	return JsonResponse( get_page_data( int(page) ) )
