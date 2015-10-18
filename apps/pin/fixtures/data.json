@@ -1,0 +1,13 @@
+[
+    {
+        "pk" : 3,
+        "model": "pin.board",
+        "fields" : {
+            "title" : '',
+            "blurb" : '',
+            "author" : '',
+            "thumbnail" : '',
+            "details" : '',
+        }
+    }
+]
