@@ -1,0 +1,51 @@
+<!DOCTYPE html>			
+<html lang ="en">
+	<head>
+		<meta charset ="UTF-8">
+		<title>Layout</title>
+        {% load staticfiles %}
+		<link rel="stylesheet" type="text/css" href="{% static 'layout.css' %}">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	</head>
+	<body>
+		<div id ="header">
+		</div>
+		<div id = "container">
+			<div class='tiles'>	
+				<div class='t t1'>
+					<ul>
+						<li>Happy Face</li>
+						<li><img src="{% static 'smi.jpg' %}"></li>
+						<li>A smiley(sometime simply called a)
+							happy or similing face)
+							<a href="">ReadMore</a></li>
+						<li>Vasantha</li>li>
+						<li><a href="">Link</a></li>li>
+						<li><a href="">Details_URL</a></li>
+					</ul>		
+				</div>
+				<div class='t t2'><img src="smi.jpg"></div>
+				<div class='t t3'><img src="smi.jpg"></div>
+				<div class='t t4'><img src="smi.jpg"></div>
+				<div class='t t5'><img src="smi.jpg"></div>
+				<div class='t t6'><img src="smi.jpg"></div>
+				<div class='t t7'><img src="smi.jpg"></div>
+				<div class='t t8'><img src="smi.jpg"></div>
+				<div class='t t9'><img src="smi.jpg"></div>
+				<div class='t t10'><img src="smi.jpg"></div>
+				<div class='t t11'><img src="smi.jpg"></div>
+				<div class='t t12'><img src="smi.jpg"></div>
+				<div class='t t13'><img src="smi.jpg"></div>
+				<div class='t t14'><img src="smi.jpg"></div>
+				<div class='t t15'><img src="smi.jpg"></div>
+				<div class='t t16'><img src="smi.jpg"></div>
+			</div>
+		</div>
+		<div id ="footer">
+			<p>That's the end of the scroll</p>
+		</div>	
+	</body>
+
+    <script type="text/javascript" src = "{% static 'layout.js' %}"></script>
+
+</html>
