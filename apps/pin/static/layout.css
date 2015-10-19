@@ -1,7 +1,7 @@
 #header{
 	background-color: #E8B99D;
 	padding: 5px;
-	height: 100px;
+	height: 50px;
 	}
 
 #container{
@@ -14,7 +14,6 @@
 	position: relative;
 	width: 85%;
 	margin-left: 120px;
-	background-color: red;
 	height: 50px;
 
 	}
