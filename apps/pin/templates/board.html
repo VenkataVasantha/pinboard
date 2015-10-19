@@ -44,7 +44,7 @@
 
 				.grid-item--height2 { height: 200px; }
 				.grid-item--height3 { height: 260px; }
-				.grid-item--height4 { height: 360px; }
+				.grid-item--height4 { height: 300px; }
 
 
                 ul { margin: 0; padding: 0; color: #333; }
@@ -57,9 +57,9 @@
                 }
 
                 .title { font-weight: 600; color: #888; margin-top: 5px; font-size: 14px;}
-                .blurb { text-overflow: ellipsis; color: #888 }
-                .author { color: #D26; text-transform: capitalize; font-weight: bold; }
-                .detail { text-overflow: ellipsis; color: #888; overflow:hidden; white-space: nowrap;}
+                .blurb { text-overflow: ellipsis; color: #888; overflow:hidden; white-space: nowrap; margin-top: 5px;}
+                .author { color: #D26; text-transform: capitalize; font-weight: bold; margin-top: 5px;}
+                .detail { text-overflow: ellipsis; color: #888; overflow:hidden; white-space: nowrap; margin-top: 5px;}
 
         </style>
     </head>
@@ -77,7 +77,7 @@
                 .done( function(data) {
                      for (var i in data) {
                          f = data[i].fields
-                         var height = 'grid-item--height3';
+                         var height = 'grid-item--height4';
                          if( i%2 == 0 ) {
                              height = 'grid-item--height3';
                          }
