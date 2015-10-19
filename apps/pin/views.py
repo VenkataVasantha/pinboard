@@ -28,7 +28,7 @@ def get_page_data(page):
 
 # For first page, always load page 1
 def index(request):
-    return render(request, 'layout.html')
+    return render(request, 'board.html')
 
 # For other pages , load selected page
 def load_page(request, page):
