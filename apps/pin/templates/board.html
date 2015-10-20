@@ -44,7 +44,7 @@
 
 				.grid-item--height2 { height: 200px; }
 				.grid-item--height3 { height: 260px; }
-				.grid-item--height4 { height: 360px; }
+				.grid-item--height4 { height: 300px; }
 
 
                 ul { margin: 0; padding: 0; color: #333; }
@@ -57,9 +57,9 @@
                 }
 
                 .title { font-weight: 600; color: #888; margin-top: 5px; font-size: 14px;}
-                .blurb { text-overflow: ellipsis; color: #888 }
-                .author { color: #D26; text-transform: capitalize; font-weight: bold; }
-                .detail { text-overflow: ellipsis; color: #888; overflow:hidden; white-space: nowrap;}
+                .blurb { text-overflow: ellipsis; color: #888; overflow:hidden; white-space: nowrap; margin-top: 5px;}
+                .author { color: #D26; text-transform: capitalize; font-weight: bold; margin-top: 5px;}
+                .detail { text-overflow: ellipsis; color: #888; overflow:hidden; white-space: nowrap; margin-top: 5px;}
 
         </style>
     </head>
@@ -72,27 +72,45 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function($) {
-            var page = 1;
-            var xhr  = $.ajax("api/page/1")
-                .done( function(data) {
-                     for (var i in data) {
-                         f = data[i].fields
-                         var height = 'grid-item--height3';
-                         if( i%2 == 0 ) {
-                             height = 'grid-item--height3';
-                         }
-                         content  = '<div class="grid-item grid-item--width2 ' + height + '" style="padding:5px;">';
-                         content += '<ul>';
-                         content += '<li class="thumbnail"><img src="{% static 'smi.jpg' %}" width="150px" height="150"/></li>';
-                         content += '<li class="title">' + f.title + '</li>';
-                         content += '<li class="blurb">' + f.blurb + '</li>';
-                         content += '<li class="author">' + f.author + '</li>';
-                         content += '<li class="detail">' + f.details + '</li>';
+            var page  = 1; // Initial Page
+            var total = 4; // Max Pages
 
-                         $('#board-data').append(content);
+            // Load first page on ready
+            load_page(page);
+
+            // Load each page for each scroll
+            $(document).scroll(function(e) {
+                     if (page > total){
+                         return false;
+                     } else {
+                         load_page(page);
                      }
-                 })
-                .fail( function() { alert("failure"); });
+                     page++;
+            });
+
+            function load_page(page) {
+					var xhr  = $.ajax("api/page/" + page)
+						.done( function(data) {
+							 for (var i in data) {
+								 f = data[i].fields
+								 var height = 'grid-item--height4';
+								 if( i%2 == 0 ) {
+									 height = 'grid-item--height3';
+								 }
+								 content  = '<div class="grid-item grid-item--width2 ' + height + '" style="padding:5px;">';
+								 content += '<ul>';
+								 content += '<li class="thumbnail"><img src="{% static 'smi.jpg' %}" width="150px" height="150"/></li>';
+								 content += '<li class="title">' + f.title + '</li>';
+								 content += '<li class="blurb">' + f.blurb + '</li>';
+								 content += '<li class="author">' + f.author + '</li>';
+								 content += '<li class="detail">' + f.details + '</li>';
+
+								 $('#board-data').append(content);
+							 }
+						 })
+
+					}
+
         });
     </script>
 </html>
